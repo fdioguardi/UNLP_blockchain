@@ -17,16 +17,16 @@ def transfer(
     fee_rate: float,
 ) -> None:
     from_addr: str = addr_from_priv(wallet, from_priv)
+
     logger.info(f"Enviando {amount} BTC desde {from_addr} hacia {to_addr}")
 
-    breakpoint()
     COIN.send(
         privkey=from_priv,
         frm=from_addr,
-        to=change_addr,
+        to=to_addr,
         value=amount,
-        change_addr=to_addr,
-        fee=int(amount * fee_rate),
+        change_addr=change_addr,
+        fee=int(fee_rate * amount),
     )
 
 
@@ -82,8 +82,8 @@ def main() -> None:
         args.from_priv,
         args.to_addr,
         change_addr,
-        args.amount,
-        args.fee_rate,
+        int(args.amount),
+        float(args.fee_rate),
     )
 
     for addr in [from_addr, args.to_addr, change_addr]:

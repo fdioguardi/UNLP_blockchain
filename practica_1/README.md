@@ -69,4 +69,35 @@ Con esta dirección, pude [solicitar los satoshis a la faucet sin problemas](htt
 
 - Una vez recibido BTC Test sobre la primera dirección, realice otro script que restaure una billetera desde las palabras generadas en el punto anterior.
 
+  ```bash
+  $ python transfer.py -h
+  usage: transfer.py [-h] --from-priv FROM_PRIV --to-addr TO_ADDR [--change CHANGE] --amount AMOUNT [--fee-rate FEE_RATE] --seed SEED
+
+  Realizar una transferencia entre dos direcciones en la Testnet de Bitcoin.
+
+  options:
+    -h, --help            show this help message and exit
+    --from-priv FROM_PRIV
+                          Clave privada de la dirección de origen
+    --to-addr TO_ADDR     Dirección de destino
+    --change CHANGE       Dirección de cambio
+    --amount AMOUNT       Cantidad de Bitcoin a transferir
+    --fee-rate FEE_RATE   Tasa de comisión
+    --seed SEED           Frase semilla de la billetera
+  ```
+
 - Luego envíe 20 satoshis desde la primera dirección (que tiene BTC Test) a la segunda dirección.
+
+#### Bitácora
+
+Acá tuve problemas con 2 cosas:
+
+- Obtener la clave privada de la dirección de origen.
+
+  Estaba intentando no usar la clave privada directamente, sino obtenerla a partir de la dirección y la frase semilla. Cuando no pude intenté lo contrario, usar solo la privada y recuperar la dirección de origen. Esto último sí es más factible, pero sigue siendo un problema. Por defecto la librería sigue usando el prefijo incorrecto a la hora de devolver direcciones, o sea que no me daba el formato de address correcto. Para no hardcodear el prefijo ni asumir que siempre la transacción se envía de la primera dirección o algo así, pido ambas cosas por parámetro.
+
+- Mandar la transacción (`TODO`)
+
+  Sigue en `TODO` porque me comieron tiempo errores tontos de tipos (value era float y no int...). Igualmente, ahora tengo un rango de errores que va desde el timeout, fondos insuficientes, y el infame:
+
+    > aiorpcx.jsonrpc.ProtocolError: (-32600, 'ill-formed response error object: sendrawtransaction RPC error: {"code":-26,"message":"dust"}')
