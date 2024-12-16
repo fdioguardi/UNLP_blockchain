@@ -3,7 +3,7 @@
     <h4>Primeros conceptos</h4>
 </div>
 
-### Ejercicio 1
+## Ejercicio 1
 
 - Realice un script que genere una billetera y muestre 2 direcciones de recepción sobre la Testnet de Bitcoin.
 
@@ -37,7 +37,7 @@
 
   Usé [Bitcoin Testnet Faucet](https://bitcoinfaucet.uo1.net/) para solicitar _₿ 0.000001_ (100 satoshis) a la dirección `tb1qde2whs4eyc8jdwusnmmlkw06a8rvmentwccplp`.
 
-#### Bitácora
+### Bitácora
 
 Al principio, creaba la wallet con el método `wallet()` de `Bitcoin`.
 
@@ -65,7 +65,7 @@ Con esta dirección, pude [solicitar los satoshis a la faucet sin problemas](htt
 
 > Transaction of 0.00001 coins to tb1qde2whs4eyc8jdwusnmmlkw06a8rvmentwccplp has been placed into the sending queue. Don't forget to send the testnet coins back when you're done with them.
 
-### Ejercicio 2
+## Ejercicio 2
 
 - Una vez recibido BTC Test sobre la primera dirección, realice otro script que restaure una billetera desde las palabras generadas en el punto anterior.
 
@@ -88,7 +88,7 @@ Con esta dirección, pude [solicitar los satoshis a la faucet sin problemas](htt
 
 - Luego envíe 20 satoshis desde la primera dirección (que tiene BTC Test) a la segunda dirección.
 
-#### Bitácora
+### Bitácora
 
 Acá tuve problemas con 2 cosas:
 
