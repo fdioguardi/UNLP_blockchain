@@ -1,0 +1,8 @@
+dotenv: .env
+compiler:
+  evm_version: null
+  solc:
+    optimizer:
+      enabled: true
+      runs: 2000
+deployer: ${PRIVATE_KEY}
